@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to the QIIME2 workshop! &mdash; qiime2-workshop 2020.11 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quality control and feature tabulation" href="denoise.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> qiime2-workshop
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="denoise.html">Quality control and feature tabulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taxonomy.html">Taxonomic classification</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">qiime2-workshop</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Welcome to the QIIME2 workshop!</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="welcome-to-the-qiime2-workshop">
+<h1>Welcome to the QIIME2 workshop!<a class="headerlink" href="#welcome-to-the-qiime2-workshop" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general-introduction">
+<h2>General Introduction<a class="headerlink" href="#general-introduction" title="Permalink to this headline">¶</a></h2>
+<p>This workshop will introduce you to analysis of DNA metabarcoding sequencing data using the command line tool QIIME2
+(<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/31341288/">Bolyen et al. 2019</a>).
+QIIME 2™ is a next-generation microbiome bioinformatics platform that is extensible, free, open source, and community developed.
+The goal of this workshop is to produce an abundance table and a
+<a class="reference external" href="https://view.qiime2.org/visualization/?type=html&amp;src=https%3A%2F%2Fdocs.qiime2.org%2F2020.6%2Fdata%2Ftutorials%2Fmoving-pictures%2Ftaxa-bar-plots.qzv">taxonomic classification</a>
+from raw amplicon sequences.
+These can be used for downstream analyses like community profiling or diversity analyses, although this is not part of the workshop.</p>
+<p>The emphasis lies on getting hands-on experience with data analyses.
+No prior experience in bioinformatics is needed, but some basic knowledge of the UNIX operating system will come in handy.
+Check out <a class="reference external" href="http://www.ee.surrey.ac.uk/Teaching/Unix/">these tutorials</a> in preparation for the workshop, in particular Tutorial
+<a class="reference external" href="http://www.ee.surrey.ac.uk/Teaching/Unix/unix1.html">One</a>,
+<a class="reference external" href="http://www.ee.surrey.ac.uk/Teaching/Unix/unix2.html">Two</a> and
+<a class="reference external" href="http://www.ee.surrey.ac.uk/Teaching/Unix/unix3.html">Three</a>.</p>
+</div>
+<div class="section" id="time-and-place">
+<h2>Time and place<a class="headerlink" href="#time-and-place" title="Permalink to this headline">¶</a></h2>
+<p>The workshop will be held through Zoom/discourse.</p>
+</div>
+<div class="section" id="data-package">
+<h2>Data package<a class="headerlink" href="#data-package" title="Permalink to this headline">¶</a></h2>
+<p>You can download the data package used in this workshop from Zenodo.
+This data package contains the following:</p>
+<ul class="simple">
+<li><p>Demultiplexed fastq.gz files for each of your samples with amplicon sequences and quality scores</p></li>
+<li><p>The SILVA 16S taxonomic database version 138</p></li>
+<li><p>The taxonomic classifier, specifically pre-trained to use on this data set</p></li>
+<li><p>The bash scripts used to run the entire workflow</p></li>
+<li><p>The WALKTHROUGH with instuctions on how to run thse analyses on the crunchomics cluster</p></li>
+<li><p>All intermediate results, such that you can choose to skip very time consuming steps.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When you follow the steps in this tutorial, you will overwrite the pre-computed intermediate files present in your data package.
+Make sure to keep a copy of the original data package, such that you can always restore these pre-computed files when needed.</p>
+</div>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>The only thing you need to do yourself is install QIIME2 version 2021.2 on your computer.
+For installation instructions see <a class="reference external" href="https://docs.qiime2.org/2021.2/install/native/">https://docs.qiime2.org/2021.2/install/native/</a>.
+If you need help with the installation, please let me know in time and we can look at it together.</p>
+<p>It is not necessary for this workshop to have a very powerful computer.
+You can run most of the analyses on a laptop, and if that does not work,
+you can skip that step and continue with the intermediate files in your data package.</p>
+</div>
+<div class="section" id="crunchomics">
+<h2>Crunchomics<a class="headerlink" href="#crunchomics" title="Permalink to this headline">¶</a></h2>
+<p>Crunchomics is the HPC cluster of SILS/IBED (<a class="reference external" href="https://crunchomics-documentation.readthedocs.io/en/latest/">documentation</a>).
+It is only accessible for participants with an UvA netID that have preregistered for an account.
+To get an account, pls send an email including your UvA netID to the crunchomics system administrator, Wim de Leeuw (<a class="reference external" href="mailto:w&#46;c&#46;deleeuw&#37;&#52;&#48;uva&#46;nl">w<span>&#46;</span>c<span>&#46;</span>deleeuw<span>&#64;</span>uva<span>&#46;</span>nl</a>).</p>
+<p>Once you have your crunchomics account you can login to crunchomics and install miniconda, following <cite>these instructions &lt;https://crunchomics-documentation.readthedocs.io/en/latest/miniconda.html</cite>&gt;_.</p>
+<p>During the optional crunchomics module of the workshop you make use of pre-installed programs and databases available only to amplicomics group members.
+To become a member of the amplicomics group, send an email including your UvA netID to <a class="reference external" href="mailto:e&#46;jongepier&#37;&#52;&#48;uva&#46;nl">e<span>&#46;</span>jongepier<span>&#64;</span>uva<span>&#46;</span>nl</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Membership of the amplicomics group goes through the faculty ICTS department so may take several days to arrange.
+Pls contact <a class="reference external" href="mailto:e&#46;jongepier&#37;&#52;&#48;uva&#46;nl">e<span>&#46;</span>jongepier<span>&#64;</span>uva<span>&#46;</span>nl</a> well in advance if you like to participate in the optional crunchomics module of the workshop.</p>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="denoise.html">Quality control and feature tabulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="denoise.html#prepping-the-manifest-file">Prepping the manifest file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="denoise.html#id1">Importing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="denoise.html#primer-removal">Primer removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="denoise.html#feature-table-construction">Feature table construction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="denoise.html#deblur-denoise">Deblur denoise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="denoise.html#dada2-denoise">DADA2 denoise</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="taxonomy.html">Taxonomic classification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="taxonomy.html#importing-the-database">Importing the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taxonomy.html#extract-reference-reads">Extract reference reads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taxonomy.html#train-the-classifier">Train the classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taxonomy.html#id1">Taxonomic classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taxonomy.html#taxonomic-barplot">Taxonomic barplot</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="denoise.html" class="btn btn-neutral float-right" title="Quality control and feature tabulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Evelien Jongepier
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

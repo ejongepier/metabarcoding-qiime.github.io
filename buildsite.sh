@@ -44,9 +44,9 @@ cat > .gitignore <<EOF
 !buildsite.sh
 !.nojekyll
 !/docs/
-!/docs/*
+!/docs/**
 !/source/
-!/source/*
+!/source/**
 EOF
 
 ###############
