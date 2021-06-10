@@ -60,6 +60,5 @@ git branch -M main
 git remote add origin https://github.com/ejongepier/metabarcoding-qiime.github.io.git
 git push -u origin main
 
-
 # go to github repo settings and select under Github Pages source: main /docs
 
