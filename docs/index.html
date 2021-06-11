@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to the QIIME2 workshop! &mdash; qiime2-workshop 2020.11 documentation</title>
+  <title>Welcome to the Metabarcoding - QIIME2 workshop! &mdash; qiime2-workshop 2020.11 documentation</title>
   
 
   
@@ -128,7 +128,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>Welcome to the QIIME2 workshop!</li>
+      <li>Welcome to the Metabarcoding - QIIME2 workshop!</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -145,67 +145,101 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-the-qiime2-workshop">
-<h1>Welcome to the QIIME2 workshop!<a class="headerlink" href="#welcome-to-the-qiime2-workshop" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="welcome-to-the-metabarcoding-qiime2-workshop">
+<h1>Welcome to the Metabarcoding - QIIME2 workshop!<a class="headerlink" href="#welcome-to-the-metabarcoding-qiime2-workshop" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="general-introduction">
 <h2>General Introduction<a class="headerlink" href="#general-introduction" title="Permalink to this headline">¶</a></h2>
-<p>This workshop will introduce you to analysis of DNA metabarcoding sequencing data using the command line tool QIIME2
-(<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/31341288/">Bolyen et al. 2019</a>).
-QIIME 2™ is a next-generation microbiome bioinformatics platform that is extensible, free, open source, and community developed.
-The goal of this workshop is to produce an abundance table and a
-<a class="reference external" href="https://view.qiime2.org/visualization/?type=html&amp;src=https%3A%2F%2Fdocs.qiime2.org%2F2020.6%2Fdata%2Ftutorials%2Fmoving-pictures%2Ftaxa-bar-plots.qzv">taxonomic classification</a>
-from raw amplicon sequences.
-These can be used for downstream analyses like community profiling or diversity analyses, although this is not part of the workshop.</p>
-<p>The emphasis lies on getting hands-on experience with data analyses.
-No prior experience in bioinformatics is needed, but some basic knowledge of the UNIX operating system will come in handy.
-Check out <a class="reference external" href="http://www.ee.surrey.ac.uk/Teaching/Unix/">these tutorials</a> in preparation for the workshop, in particular Tutorial
-<a class="reference external" href="http://www.ee.surrey.ac.uk/Teaching/Unix/unix1.html">One</a>,
-<a class="reference external" href="http://www.ee.surrey.ac.uk/Teaching/Unix/unix2.html">Two</a> and
-<a class="reference external" href="http://www.ee.surrey.ac.uk/Teaching/Unix/unix3.html">Three</a>.</p>
+<p>This workshop will introduce you to analysis of DNA metabarcoding sequencing data using the command line tool QIIME2.
+QIIME2™ is a next-generation microbiome bioinformatics platform that is extensible, free, open source, and community developed (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/31341288/">Bolyen et al. 2019</a>).</p>
+</div>
+<div class="section" id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h2>
+<p>At the end of the two-day Metabarcoding - QIIME2 workshop, you are able to</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>Perform quality control and produce an ASV abundance table from raw amplicon sequences.</strong> These can be used for downstream analyses like community profiling or diversity analyses, although this is not part of the workshop.</p></li>
+<li><p><strong>Perform taxonomic classification and generate interactive</strong> <a class="reference external" href="https://view.qiime2.org/visualization/?type=html&amp;src=https%3A%2F%2Fdocs.qiime2.org%2F2020.6%2Fdata%2Ftutorials%2Fmoving-pictures%2Ftaxa-bar-plots.qzv">taxonomic barplots</a>  <strong>of bacterial and archeal communities</strong> using the SILVA 16S database. These skills can be readilly applied to other taxonomic groups such as animals, plants and fungi, using other marker genes and databases (e.g. 18S/SILVA, ITS/UNITE or CO1/BOLD).</p></li>
+<li><p><strong>Run these analyses on the crunchomics cluster</strong>*, such that you have access to sufficient computational power to analyse your own amplicon sequencing dataset.</p></li>
+</ol>
+</div></blockquote>
+<p>* <em>Only possible for participants from SILS or IBED that have access to the Crunchomics cluster.</em></p>
 </div>
 <div class="section" id="time-and-place">
 <h2>Time and place<a class="headerlink" href="#time-and-place" title="Permalink to this headline">¶</a></h2>
-<p>The workshop will be held through Zoom/discourse.</p>
+<p>The workshop will be held through Zoom.
+To join, just follow <a class="reference external" href="https://uva-live.zoom.us/j/85878918578">this link</a>.</p>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">Schedule QIIME2 workshop June 2021</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Day</p></th>
+<th class="head"><p>Time</p></th>
+<th class="head"><p>Topic</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Mon June 28th</p></td>
+<td><p>09:00 - 12:00</p></td>
+<td><p>Quality control and ASV table construction.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>13:30 - 17:00</p></td>
+<td><p>OPTIONAL: Running analyses on Crunchomics*.</p></td>
+</tr>
+<tr class="row-even"><td><p>Tue June 29th</p></td>
+<td><p>09:00 - 12:00</p></td>
+<td><p>Taxonomic classification using the SILVA 16S database.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>13:30 - 17:00</p></td>
+<td><p>OPTIONAL: Running analyses on Crunchomics*.</p></td>
+</tr>
+</tbody>
+</table>
+<p>* <em>Only possible for participants from SILS or IBED that have access to the Crunchomics cluster.</em></p>
 </div>
-<div class="section" id="data-package">
-<h2>Data package<a class="headerlink" href="#data-package" title="Permalink to this headline">¶</a></h2>
-<p>You can download the data package used in this workshop from Zenodo.
-This data package contains the following:</p>
-<ul class="simple">
-<li><p>Demultiplexed fastq.gz files for each of your samples with amplicon sequences and quality scores</p></li>
-<li><p>The SILVA 16S taxonomic database version 138</p></li>
-<li><p>The taxonomic classifier, specifically pre-trained to use on this data set</p></li>
-<li><p>The bash scripts used to run the entire workflow</p></li>
-<li><p>The WALKTHROUGH with instuctions on how to run thse analyses on the crunchomics cluster</p></li>
-<li><p>All intermediate results, such that you can choose to skip very time consuming steps.</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>When you follow the steps in this tutorial, you will overwrite the pre-computed intermediate files present in your data package.
-Make sure to keep a copy of the original data package, such that you can always restore these pre-computed files when needed.</p>
+<div class="section" id="how-to-prepare">
+<h2>How to prepare?<a class="headerlink" href="#how-to-prepare" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="familiarize-yourself-with-unix">
+<h3>Familiarize yourself with UNIX<a class="headerlink" href="#familiarize-yourself-with-unix" title="Permalink to this headline">¶</a></h3>
+<p>The emphasis of this workshop lies on getting hands-on experience with data analyses.
+No prior experience in bioinformatics is needed, but some basic knowledge of the UNIX operating system will come in handy.
+Check out for instance <a class="reference external" href="http://www.ee.surrey.ac.uk/Teaching/Unix/">these tutorials</a> in preparation for the workshop, in particular Tutorial
+<a class="reference external" href="http://www.ee.surrey.ac.uk/Teaching/Unix/unix1.html">1</a>,
+<a class="reference external" href="http://www.ee.surrey.ac.uk/Teaching/Unix/unix2.html">2</a> and
+<a class="reference external" href="http://www.ee.surrey.ac.uk/Teaching/Unix/unix3.html">3</a>.</p>
+</div>
+<div class="section" id="install-qiime2-version-2021-2">
+<h3>Install QIIME2 version 2021.2<a class="headerlink" href="#install-qiime2-version-2021-2" title="Permalink to this headline">¶</a></h3>
+<p>Please install QIIME2 version 2021.2 on your laptop or desktop computer following <a class="reference external" href="https://docs.qiime2.org/2021.2/install/native/">these installation instructions</a>.
+WINDOWS users will first need to setup <a class="reference external" href="https://docs.qiime2.org/2021.2/install/virtual/wsl/">Windows subsystem for Linux</a>.
+This may take some time, so please do so well in advance.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>QIIME2 version 2021.2 is not the latest version of QIIME2, but is is the version you will need for this workshop.
+The reason is that you may not be able to skip computationally intensive steps if you use a different version of QIIME2.</p>
 </div>
 </div>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
-<p>The only thing you need to do yourself is install QIIME2 version 2021.2 on your computer.
-For installation instructions see <a class="reference external" href="https://docs.qiime2.org/2021.2/install/native/">https://docs.qiime2.org/2021.2/install/native/</a>.
-If you need help with the installation, please let me know in time and we can look at it together.</p>
-<p>It is not necessary for this workshop to have a very powerful computer.
-You can run most of the analyses on a laptop, and if that does not work,
-you can skip that step and continue with the intermediate files in your data package.</p>
+<div class="section" id="optional-sign-up-for-the-crunchomics-cluster">
+<h3>OPTIONAL: Sign up for the Crunchomics cluster<a class="headerlink" href="#optional-sign-up-for-the-crunchomics-cluster" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://crunchomics-documentation.readthedocs.io/en/latest/">Crunchomics</a> is the genomics compute environment for SILS and IBED.
+It is only accessible for participants with an UvA netID that have pre-registered for an account.
+To register, please send an email including your UvA netID to the Crunchomics system administrator <a class="reference external" href="mailto:w&#46;c&#46;deleeuw&#37;&#52;&#48;uva&#46;nl">Wim de Leeuw</a>.
+Once you have an account you should <a class="reference external" href="https://crunchomics-documentation.readthedocs.io/en/latest/intro_crunchomics.html">login to Crunchomics</a>
+and <a class="reference external" href="https://crunchomics-documentation.readthedocs.io/en/latest/miniconda.html">install miniconda</a>.</p>
 </div>
-<div class="section" id="crunchomics">
-<h2>Crunchomics<a class="headerlink" href="#crunchomics" title="Permalink to this headline">¶</a></h2>
-<p>Crunchomics is the HPC cluster of SILS/IBED (<a class="reference external" href="https://crunchomics-documentation.readthedocs.io/en/latest/">documentation</a>).
-It is only accessible for participants with an UvA netID that have preregistered for an account.
-To get an account, pls send an email including your UvA netID to the crunchomics system administrator, Wim de Leeuw (<a class="reference external" href="mailto:w&#46;c&#46;deleeuw&#37;&#52;&#48;uva&#46;nl">w<span>&#46;</span>c<span>&#46;</span>deleeuw<span>&#64;</span>uva<span>&#46;</span>nl</a>).</p>
-<p>Once you have your crunchomics account you can login to crunchomics and install miniconda, following <cite>these instructions &lt;https://crunchomics-documentation.readthedocs.io/en/latest/miniconda.html</cite>&gt;_.</p>
-<p>During the optional crunchomics module of the workshop you make use of pre-installed programs and databases available only to amplicomics group members.
-To become a member of the amplicomics group, send an email including your UvA netID to <a class="reference external" href="mailto:e&#46;jongepier&#37;&#52;&#48;uva&#46;nl">e<span>&#46;</span>jongepier<span>&#64;</span>uva<span>&#46;</span>nl</a>.</p>
+<div class="section" id="optional-become-a-member-of-the-amplicomics-group">
+<h3>OPTIONAL: Become a member of the amplicomics group<a class="headerlink" href="#optional-become-a-member-of-the-amplicomics-group" title="Permalink to this headline">¶</a></h3>
+<p>During the optional Crunchomics module (and afterwards when working on your own data), you can use pre-installed programs and databases available only to amplicomics group members.
+To become a member, send an email including your UvA netID to <a class="reference external" href="mailto:e&#46;jongepier&#37;&#52;&#48;uva&#46;nl">Evelien Jongepier</a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Membership of the amplicomics group goes through the faculty ICTS department so may take several days to arrange.
-Pls contact <a class="reference external" href="mailto:e&#46;jongepier&#37;&#52;&#48;uva&#46;nl">e<span>&#46;</span>jongepier<span>&#64;</span>uva<span>&#46;</span>nl</a> well in advance if you like to participate in the optional crunchomics module of the workshop.</p>
+Pls contact <a class="reference external" href="mailto:e&#46;jongepier&#37;&#52;&#48;uva&#46;nl">Evelien Jongepier</a> well in advance if you like to participate in the optional Crunchomics module of the workshop.</p>
 </div>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
@@ -230,6 +264,7 @@ Pls contact <a class="reference external" href="mailto:e&#46;jongepier&#37;&#52;
 </ul>
 </li>
 </ul>
+</div>
 </div>
 </div>
 </div>

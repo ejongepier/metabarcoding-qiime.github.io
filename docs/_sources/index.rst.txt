@@ -3,32 +3,36 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to the QIIME2 workshop!
-===========================================
+Welcome to the Metabarcoding - QIIME2 workshop!
+################################################
 
 General Introduction
-------------------------------------------
+===========================================
 
-This workshop will introduce you to analysis of DNA metabarcoding sequencing data using the command line tool QIIME2
-(`Bolyen et al. 2019 <https://pubmed.ncbi.nlm.nih.gov/31341288/>`_). 
-QIIME 2™ is a next-generation microbiome bioinformatics platform that is extensible, free, open source, and community developed.  
-The goal of this workshop is to produce an abundance table and a 
-`taxonomic classification <https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fdocs.qiime2.org%2F2020.6%2Fdata%2Ftutorials%2Fmoving-pictures%2Ftaxa-bar-plots.qzv>`_ 
-from raw amplicon sequences.
-These can be used for downstream analyses like community profiling or diversity analyses, although this is not part of the workshop.
+This workshop will introduce you to analysis of DNA metabarcoding sequencing data using the command line tool QIIME2.
+QIIME2™ is a next-generation microbiome bioinformatics platform that is extensible, free, open source, and community developed (`Bolyen et al. 2019 <https://pubmed.ncbi.nlm.nih.gov/31341288/>`_).
 
-The emphasis lies on getting hands-on experience with data analyses.
-No prior experience in bioinformatics is needed, but some basic knowledge of the UNIX operating system will come in handy. 
-Check out `these tutorials <http://www.ee.surrey.ac.uk/Teaching/Unix/>`_ in preparation for the workshop, in particular Tutorial 
-`One <http://www.ee.surrey.ac.uk/Teaching/Unix/unix1.html>`_, 
-`Two <http://www.ee.surrey.ac.uk/Teaching/Unix/unix2.html>`_ and 
-`Three <http://www.ee.surrey.ac.uk/Teaching/Unix/unix3.html>`_.
+
+Objectives
+===========================================
+
+At the end of the two-day Metabarcoding - QIIME2 workshop, you are able to 
+
+   1. **Perform quality control and produce an ASV abundance table from raw amplicon sequences.** These can be used for downstream analyses like community profiling or diversity analyses, although this is not part of the workshop.
+
+   2. **Perform taxonomic classification and generate interactive** `taxonomic barplots <https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fdocs.qiime2.org%2F2020.6%2Fdata%2Ftutorials%2Fmoving-pictures%2Ftaxa-bar-plots.qzv>`_  **of bacterial and archeal communities** using the SILVA 16S database. These skills can be readilly applied to other taxonomic groups such as animals, plants and fungi, using other marker genes and databases (e.g. 18S/SILVA, ITS/UNITE or CO1/BOLD).
+
+   3. **Run these analyses on the crunchomics cluster**\*, such that you have access to sufficient computational power to analyse your own amplicon sequencing dataset.
+
+\* *Only possible for participants from SILS or IBED that have access to the Crunchomics cluster.*
+
 
 
 Time and place
-------------------------------------------
+===========================================
 
-The workshop will be held through Zoom/discourse.
+The workshop will be held through Zoom.
+To join, just follow `this link <https://uva-live.zoom.us/j/85878918578>`_.
 
 .. list-table:: Schedule QIIME2 workshop June 2021
    :widths: 25 25 50
@@ -38,78 +42,75 @@ The workshop will be held through Zoom/discourse.
      - Time
      - Topic
    * - Mon June 28th
-     - 9:00 - 12:00
+     - 09:00 - 12:00
      - Quality control and ASV table construction.
    * - 
      - 13:30 - 17:00
-     - Optional: Work on your own data.
-   * -
-     -
-     - Optional: Running analyses on crunchomics. 
+     - OPTIONAL: Running analyses on Crunchomics\*. 
    * - Tue June 29th
-     - 9:00 - 12:00
+     - 09:00 - 12:00
      - Taxonomic classification using the SILVA 16S database.
-     - 13:30 - 17:00
-     - Optional: Work on your own data.
    * -
-     -
-     - Optional: Running analyses on crunchomics.
+     - 13:30 - 17:00
+     - OPTIONAL: Running analyses on Crunchomics\*.
+
+\* *Only possible for participants from SILS or IBED that have access to the Crunchomics cluster.*
 
 
+How to prepare?
+===========================================
 
-Data package
+Familiarize yourself with UNIX
 ---------------------------------------------
 
-You can download the data package used in this workshop from Zenodo.
-This data package contains the following:
-
-* Demultiplexed fastq.gz files for each of your samples with amplicon sequences and quality scores
-* The SILVA 16S taxonomic database version 138
-* The taxonomic classifier, specifically pre-trained to use on this data set
-* The bash scripts used to run the entire workflow
-* The WALKTHROUGH with instuctions on how to run thse analyses on the crunchomics cluster
-* All intermediate results, such that you can choose to skip very time consuming steps.
-
-.. tip::
-
-   When you follow the steps in this tutorial, you will overwrite the pre-computed intermediate files present in your data package.
-   Make sure to keep a copy of the original data package, such that you can always restore these pre-computed files when needed.
+The emphasis of this workshop lies on getting hands-on experience with data analyses.
+No prior experience in bioinformatics is needed, but some basic knowledge of the UNIX operating system will come in handy.
+Check out for instance `these tutorials <http://www.ee.surrey.ac.uk/Teaching/Unix/>`_ in preparation for the workshop, in particular Tutorial 
+`1 <http://www.ee.surrey.ac.uk/Teaching/Unix/unix1.html>`_, 
+`2 <http://www.ee.surrey.ac.uk/Teaching/Unix/unix2.html>`_ and 
+`3 <http://www.ee.surrey.ac.uk/Teaching/Unix/unix3.html>`_.
 
 
-Prerequisites
+Install QIIME2 version 2021.2
 ---------------------------------------------
 
-The only thing you need to do yourself is install QIIME2 version 2021.2 on your computer.
-For installation instructions see https://docs.qiime2.org/2021.2/install/native/.
-If you need help with the installation, please let me know in time and we can look at it together.
+Please install QIIME2 version 2021.2 on your laptop or desktop computer following `these installation instructions <https://docs.qiime2.org/2021.2/install/native/>`_.
+WINDOWS users will first need to setup `Windows subsystem for Linux <https://docs.qiime2.org/2021.2/install/virtual/wsl/>`_.
+This may take some time, so please do so well in advance.
 
-It is not necessary for this workshop to have a very powerful computer.
-You can run most of the analyses on a laptop, and if that does not work,
-you can skip that step and continue with the intermediate files in your data package.
+.. note::
+
+   QIIME2 version 2021.2 is not the latest version of QIIME2, but is is the version you will need for this workshop.
+   The reason is that you may not be able to skip computationally intensive steps if you use a different version of QIIME2.
 
 
-Crunchomics
----------------------------------------------
 
-Crunchomics is the HPC cluster of SILS/IBED (`documentation <https://crunchomics-documentation.readthedocs.io/en/latest/>`_).
-It is only accessible for participants with an UvA netID that have preregistered for an account. 
-To get an account, pls send an email including your UvA netID to the crunchomics system administrator, Wim de Leeuw (w.c.deleeuw@uva.nl).
+OPTIONAL: Sign up for the Crunchomics cluster
+-------------------------------------------------
 
-Once you have your crunchomics account you can login to crunchomics and install miniconda, following `these instructions <https://crunchomics-documentation.readthedocs.io/en/latest/miniconda.html`>_.
+`Crunchomics <https://crunchomics-documentation.readthedocs.io/en/latest/>`_ is the genomics compute environment for SILS and IBED.
+It is only accessible for participants with an UvA netID that have pre-registered for an account. 
+To register, please send an email including your UvA netID to the Crunchomics system administrator `Wim de Leeuw <mailto:w.c.deleeuw@uva.nl>`_.
+Once you have an account you should `login to Crunchomics <https://crunchomics-documentation.readthedocs.io/en/latest/intro_crunchomics.html>`_ 
+and `install miniconda <https://crunchomics-documentation.readthedocs.io/en/latest/miniconda.html>`_.
 
-During the optional crunchomics module of the workshop you make use of pre-installed programs and databases available only to amplicomics group members.
-To become a member of the amplicomics group, send an email including your UvA netID to e.jongepier@uva.nl. 
 
+OPTIONAL: Become a member of the amplicomics group
+-------------------------------------------------------
+
+During the optional Crunchomics module (and afterwards when working on your own data), you can use pre-installed programs and databases available only to amplicomics group members.
+To become a member, send an email including your UvA netID to `Evelien Jongepier <mailto:e.jongepier@uva.nl>`_. 
 
 .. warning::
 
    Membership of the amplicomics group goes through the faculty ICTS department so may take several days to arrange.
-   Pls contact e.jongepier@uva.nl well in advance if you like to participate in the optional crunchomics module of the workshop.
+   Pls contact `Evelien Jongepier <mailto:e.jongepier@uva.nl>`_ well in advance if you like to participate in the optional Crunchomics module of the workshop.
 
 
 .. toctree::
    :maxdepth: 3
    :caption: Contents:
 
+   getting-started
    denoise
    taxonomy

@@ -15,6 +15,6 @@ make github
 ###############
 
 git add .
-git commit -m "Added scripts"
+git commit -m "Updated index"
 git push -u origin main
 
