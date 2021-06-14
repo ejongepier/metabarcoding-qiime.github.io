@@ -17,12 +17,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'qiime2-workshop'
-copyright = '2020, Evelien Jongepier'
+project = 'QIIME2-workshop'
+copyright = '2021, Evelien Jongepier'
 author = 'Evelien Jongepier'
 
 # The full version, including alpha/beta/rc tags
-release = '2020.11'
+release = '2021.06'
 
 
 # -- General configuration ---------------------------------------------------
