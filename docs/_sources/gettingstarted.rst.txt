@@ -24,7 +24,7 @@ In your Terminal, enter the following to view the current directory in Windows F
 .. code-block:: bash
 
    cd ~
-   explorer.exe .
+   explorer.exe . ## don't forget the dot
 
 How to use this tutorial?
 ===========================================
@@ -32,7 +32,7 @@ How to use this tutorial?
 Where to start
 -------------------------------------------
 Assuming the data package archive (metabarcoding-qiime2-datapackage-v2021.06.tar.gz) is in your home directory, 
-extract it and navigate into the ``metabarcoding-qiime2-datapackage-v2021.06`` directory, like so:
+extract it and navigate into the metabarcoding-qiime2-datapackage-v2021.06 directory, like so:
 
 .. code-block:: bash
 
