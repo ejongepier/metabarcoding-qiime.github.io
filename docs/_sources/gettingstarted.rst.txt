@@ -48,7 +48,10 @@ If it looks like this you are golden:
 
    dada2  data  db  deblur  exports  logs  prep  README.txt  taxonomy  WALKTHROUGH.sh
 
-For the remainder of the tutorial, make sure you always run the commands from `this` directory, otherwise you will get a ``No such file or directory`` error.
+
+.. important::
+
+   For the remainder of the tutorial, make sure you always run the commands from the metabarcoding-qiime2-datapackage-v2021.06 directory, otherwise you will get a ``No such file or directory`` error.
 
 
 Skipping steps
