@@ -21,7 +21,7 @@ In order to access the data package from within your Linux file system, copy you
 Where is your Linux home?
 In your Terminal, enter the following to view the current directory in Windows File Explorer​
 
-.. bash::
+.. code-block:: bash
 
    cd ~
    explorer.exe .
@@ -37,7 +37,7 @@ Assuming the data package archive (metabarcoding-qiime2-datapackage-v2021.06.tar
 packed your data package and you are inside the ``metabarcoding-qiime2-datapackage-v2021.06`` directory.
 You can do that in your terminal like so:
 
-.. bash::
+.. code-block:: bash
 
    cd ~
    tar -xzvf metabarcoding-qiime2-datapackage-v2021.06.tar.gz
@@ -47,7 +47,7 @@ You can do that in your terminal like so:
 The last command shows you which files and subdirectories are in your current directory.
 If it looks like this you are golden:
 
-.. bash::
+.. code-block:: bash
 
    dada2  data  db  deblur  exports  logs  prep  README.txt  taxonomy  WALKTHROUGH.sh
 

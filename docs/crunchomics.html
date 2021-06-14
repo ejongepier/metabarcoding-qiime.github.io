@@ -181,8 +181,9 @@
 It only contains information relevant for cluster usage. For detailed desciption of the workflow see the previous tutorials.</p>
 <div class="section" id="some-preparatory-steps">
 <h2>Some preparatory steps<a class="headerlink" href="#some-preparatory-steps" title="Permalink to this headline">¶</a></h2>
-<p>before getting started, lets collect the data. There is a copy on the amplicomics group share which you can copy to your current directory on the crunchomucs cluster like so:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp -r /zfs/omics/projects/amplicomics/demo/data ./
+<p>Before getting started, lets collect the data.
+There is a copy on the amplicomics group share which you can use, for instance by creating a link to your current directory on the Crunchomics cluster, like so:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ln -s /zfs/omics/projects/amplicomics/demodata/metabarcoding-qiime-datapackage-v2021.06/data ./
 </pre></div>
 </div>
 <div class="section" id="setup-your-environment">
@@ -468,8 +469,11 @@ files are written to, but make sure you have sufficient space there as well of c
 Then export this as <code class="docutils literal notranslate"><span class="pre">TMPDIR</span></code>, which qiime will automatically recognize and use as the temporary directory.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p tmptmp
 <span class="nb">export</span> <span class="nv">TMPDIR</span><span class="o">=</span><span class="nv">$PWD</span>/tmptmp/
-
-<span class="nb">time</span> srun -n <span class="m">1</span> --cpus-per-task <span class="m">32</span> --mem<span class="o">=</span>80GB qiime feature-classifier classify-sklearn <span class="se">\</span>
+</pre></div>
+</div>
+<p>You need quite a lot of RAM to run the classifier. Note that this means that is many of us do this in paralell,
+you may end up in the queue. This took 14m13.817s to run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> srun -n <span class="m">1</span> --cpus-per-task <span class="m">32</span> --mem<span class="o">=</span>160GB qiime feature-classifier classify-sklearn <span class="se">\</span>
   --i-classifier db/<span class="nv">$DBPREFIX</span>-ref-classifier.qza <span class="se">\</span>
   --i-reads dada2/dada2-reprseqs.qza <span class="se">\</span>
   --o-classification taxonomy/dada2-<span class="nv">$DBPREFIX</span>-taxonomy.qza <span class="se">\</span>
