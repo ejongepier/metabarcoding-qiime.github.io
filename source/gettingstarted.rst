@@ -2,28 +2,56 @@ Getting started
 ###########################################
 
 
-
 The data package
 ===========================================
 
-You can download the data package used in this workshop from Zenodo.
+You can download the data package used in this workshop from `Zenodo <https://zenodo.org/record/4946266/files/metabarcoding-qiime2-datapackage-v2021.06.tar.gz?download=1>`_.
 This data package contains the following:
 
-* Demultiplexed fastq.gz files for each of your samples with amplicon sequences and quality scores
-* The SILVA 16S taxonomic database version 138
-* The taxonomic classifier, specifically pre-trained to use on this data set
-* The bash scripts used to run the entire workflow
-* The WALKTHROUGH with instuctions on how to run thse analyses on the crunchomics cluster
+* Raw sequencing data with quality scores as demultiplexed fastq.gz files.
+* The SILVA 16S taxonomic database version 138.
+* The taxonomic classifier, specifically pre-trained to use on this data set.
 * All intermediate results, such that you can choose to skip very time consuming steps.
 
 
 Windows subsystem for Linux - users
 ===========================================
    
+In order to access the data package from within your Linux file system, copy your data package to your Linux home​.
+Where is your Linux home?
+In your Terminal, enter the following to view the current directory in Windows File Explorer​
 
+.. bash::
+
+   cd ~
+   explorer.exe .
+
+ ​
 
 How to use this tutorial?
 ===========================================
+
+Where to start
+-------------------------------------------
+Assuming the data package archive (metabarcoding-qiime2-datapackage-v2021.06.tar.gz) is in your home directory, This tutorial assumes you have un
+packed your data package and you are inside the ``metabarcoding-qiime2-datapackage-v2021.06`` directory.
+You can do that in your terminal like so:
+
+.. bash::
+
+   cd ~
+   tar -xzvf metabarcoding-qiime2-datapackage-v2021.06.tar.gz
+   cd metabarcoding-qiime2-datapackage-v2021.06
+   ls -l
+
+The last command shows you which files and subdirectories are in your current directory.
+If it looks like this you are golden:
+
+.. bash::
+
+   dada2  data  db  deblur  exports  logs  prep  README.txt  taxonomy  WALKTHROUGH.sh
+
+For the remainder of the tutorial, make sure you always run the commands from this directory, otherwise you will get a ``No such file or directory`` error.
 
 
 Skipping steps
@@ -32,9 +60,9 @@ It is not necessary for this workshop to have a very powerful computer.
 You can run most of the analyses on a laptop, and if that does not work, 
 you can skip that step and continue with the intermediate files in your data package.
 
-
 .. tip::
 
    When you follow the steps in this tutorial, you will overwrite the pre-computed intermediate files present in your data package.
    Make sure to keep a copy of the original data package, such that you can always restore these pre-computed files when needed.
+
 

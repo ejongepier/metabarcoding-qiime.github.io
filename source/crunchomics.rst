@@ -8,11 +8,12 @@ It only contains information relevant for cluster usage. For detailed desciption
 Some preparatory steps
 =============================================
 
-before getting started, lets collect the data. There is a copy on the amplicomics group share which you can copy to your current directory on the crunchomucs cluster like so:
+Before getting started, lets collect the data. 
+There is a copy on the amplicomics group share which you can use, for instance by creating a link to your current directory on the Crunchomics cluster, like so:
 
 .. code-block:: bash
 
-   cp -r /zfs/omics/projects/amplicomics/demo/data ./
+   ln -s /zfs/omics/projects/amplicomics/demodata/metabarcoding-qiime-datapackage-v2021.06/data ./
 
 
 Setup your environment
@@ -360,7 +361,12 @@ Then export this as ``TMPDIR``, which qiime will automatically recognize and use
    mkdir -p tmptmp
    export TMPDIR=$PWD/tmptmp/
 
-   time srun -n 1 --cpus-per-task 32 --mem=80GB qiime feature-classifier classify-sklearn \
+You need quite a lot of RAM to run the classifier. Note that this means that is many of us do this in paralell,
+you may end up in the queue. This took 14m13.817s to run:
+
+.. code-block:: bash
+
+   time srun -n 1 --cpus-per-task 32 --mem=160GB qiime feature-classifier classify-sklearn \
      --i-classifier db/$DBPREFIX-ref-classifier.qza \
      --i-reads dada2/dada2-reprseqs.qza \
      --o-classification taxonomy/dada2-$DBPREFIX-taxonomy.qza \
