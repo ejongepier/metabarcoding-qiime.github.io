@@ -5,7 +5,7 @@ Getting started
 The data package
 ===========================================
 
-You can download the data package used in this workshop from `Zenodo <https://zenodo.org/record/4946266/files/metabarcoding-qiime2-datapackage-v2021.06.tar.gz?download=1>`_.
+You can download the data package used in this workshop from `Zenodo <https://doi.org/10.5281/zenodo.4946266>`_.
 This data package contains the following:
 
 * Raw sequencing data with quality scores as demultiplexed fastq.gz files.
@@ -33,9 +33,8 @@ How to use this tutorial?
 
 Where to start
 -------------------------------------------
-Assuming the data package archive (metabarcoding-qiime2-datapackage-v2021.06.tar.gz) is in your home directory, This tutorial assumes you have un
-packed your data package and you are inside the ``metabarcoding-qiime2-datapackage-v2021.06`` directory.
-You can do that in your terminal like so:
+Assuming the data package archive (metabarcoding-qiime2-datapackage-v2021.06.tar.gz) is in your home directory, 
+extract it and navigate into the ``metabarcoding-qiime2-datapackage-v2021.06`` directory, like so:
 
 .. code-block:: bash
 
@@ -51,7 +50,7 @@ If it looks like this you are golden:
 
    dada2  data  db  deblur  exports  logs  prep  README.txt  taxonomy  WALKTHROUGH.sh
 
-For the remainder of the tutorial, make sure you always run the commands from this directory, otherwise you will get a ``No such file or directory`` error.
+For the remainder of the tutorial, make sure you always run the commands from `this` directory, otherwise you will get a ``No such file or directory`` error.
 
 
 Skipping steps
