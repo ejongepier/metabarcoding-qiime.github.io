@@ -26,8 +26,6 @@ In your Terminal, enter the following to view the current directory in Windows F
    cd ~
    explorer.exe .
 
- ​
-
 How to use this tutorial?
 ===========================================
 
@@ -41,7 +39,7 @@ extract it and navigate into the ``metabarcoding-qiime2-datapackage-v2021.06`` d
    cd ~
    tar -xzvf metabarcoding-qiime2-datapackage-v2021.06.tar.gz
    cd metabarcoding-qiime2-datapackage-v2021.06
-   ls -l
+   ls
 
 The last command shows you which files and subdirectories are in your current directory.
 If it looks like this you are golden:
