@@ -34,13 +34,13 @@ To join, just follow `this link <https://uva-live.zoom.us/j/85878918578>`_.
      - Time
      - Topic
    * - Mon June 28th
-     - 09:00 - 12:00
+     - 09:00 - 12:30
      - Quality control and ASV table construction
    * - 
      - 13:30 - 17:00
      - OPTIONAL: Running analyses on Crunchomics\* 
    * - Tue June 29th
-     - 09:00 - 12:00
+     - 09:00 - 12:30
      - Taxonomic classification using the SILVA 16S database
    * -
      - 13:30 - 17:00
@@ -51,17 +51,6 @@ To join, just follow `this link <https://uva-live.zoom.us/j/85878918578>`_.
 
 How to prepare?
 ===========================================
-
-Familiarize yourself with UNIX
----------------------------------------------
-
-The emphasis of this workshop lies on getting hands-on experience with data analyses.
-No prior experience in bioinformatics is needed, but some basic knowledge of the UNIX operating system will come in handy.
-Check out for instance `these tutorials <http://www.ee.surrey.ac.uk/Teaching/Unix/>`_ in preparation for the workshop, in particular Tutorial 
-`1 <http://www.ee.surrey.ac.uk/Teaching/Unix/unix1.html>`_, 
-`2 <http://www.ee.surrey.ac.uk/Teaching/Unix/unix2.html>`_ and 
-`3 <http://www.ee.surrey.ac.uk/Teaching/Unix/unix3.html>`_.
-
 
 Install QIIME2 version 2021.2
 ---------------------------------------------
@@ -75,6 +64,17 @@ This may take some time, so please do so well in advance.
    QIIME2 version 2021.2 is not the latest version of QIIME2, but is is the version you will need for this workshop.
    The reason is that you may not be able to skip computationally intensive steps if you use a different version of QIIME2.
 
+
+
+Familiarize yourself with UNIX
+---------------------------------------------
+
+The emphasis of this workshop lies on getting hands-on experience with data analyses.
+No prior experience in bioinformatics is needed, but some basic knowledge of the UNIX operating system will come in handy.
+Check out for instance `these tutorials <http://www.ee.surrey.ac.uk/Teaching/Unix/>`_ in preparation for the workshop, in particular Tutorial 
+`1 <http://www.ee.surrey.ac.uk/Teaching/Unix/unix1.html>`_, 
+`2 <http://www.ee.surrey.ac.uk/Teaching/Unix/unix2.html>`_ and 
+`3 <http://www.ee.surrey.ac.uk/Teaching/Unix/unix3.html>`_.
 
 
 OPTIONAL: Sign up for the Crunchomics cluster
