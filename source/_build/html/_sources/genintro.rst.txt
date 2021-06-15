@@ -12,9 +12,9 @@ At the end of the two-day Metabarcoding - QIIME2 workshop, you are able to
 
    1. **Perform quality control and produce an ASV abundance table from raw amplicon sequences.** These can be used for downstream analyses like community profiling or diversity analyses, although this is not part of the workshop.
 
-   2. **Perform taxonomic classification and generate interactive** `taxonomic barplots <https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fdocs.qiime2.org%2F2020.6%2Fdata%2Ftutorials%2Fmoving-pictures%2Ftaxa-bar-plots.qzv>`_  **of bacterial and archeal communities** using the SILVA 16S database. These skills can be readilly applied to other taxonomic groups such as animals, plants and fungi, using other marker genes and databases (e.g. 18S/SILVA, ITS/UNITE or CO1/BOLD).
+   2. **Perform taxonomic classification and generate interactive** `taxonomic barplots <https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fdocs.qiime2.org%2F2020.6%2Fdata%2Ftutorials%2Fmoving-pictures%2Ftaxa-bar-plots.qzv>`_  **of bacterial and archeal communities** using the SILVA 16S database. These skills can be readily applied to other taxonomic groups such as animals, plants and fungi, using other marker genes and databases (e.g. 18S/SILVA, ITS/UNITE or CO1/BOLD).
 
-   3. **Run these analyses on the crunchomics cluster**\*, such that you have access to sufficient computational power to analyse your own amplicon sequencing dataset.
+   3. **Run these analyses on the Crunchomics cluster**\*, such that you have access to sufficient computational power to analyse your own amplicon sequencing data set.
 
 \* *Only possible for participants from SILS or IBED that have access to the Crunchomics cluster.*
 
@@ -56,7 +56,7 @@ Install QIIME2 version 2021.2
 ---------------------------------------------
 
 Please install QIIME2 version 2021.2 on your laptop or desktop computer following `these installation instructions <https://docs.qiime2.org/2021.2/install/native/>`_.
-WINDOWS users will first need to setup `Windows subsystem for Linux <https://docs.qiime2.org/2021.2/install/virtual/wsl/>`_.
+Windows users will first need to setup `Windows subsystem for Linux <https://docs.qiime2.org/2021.2/install/virtual/wsl/>`_.
 This may take some time, so please do so well in advance.
 
 .. note::
@@ -96,5 +96,5 @@ To become a member, send an email including your UvA netID to `Evelien Jongepier
 .. warning::
 
    Membership of the amplicomics group goes through the faculty ICTS department so may take several days to arrange.
-   Pls contact `Evelien Jongepier <mailto:e.jongepier@uva.nl>`_ well in advance if you like to participate in the optional Crunchomics module of the workshop.
+   Please contact `Evelien Jongepier <mailto:e.jongepier@uva.nl>`_ well in advance if you like to participate in the optional Crunchomics module of the workshop.
 
