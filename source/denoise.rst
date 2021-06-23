@@ -86,17 +86,17 @@ This online utility is also handy to share QIIME2 results with collaborators tha
 Primer removal
 =======================================
 
-The next step is to remove any adapter or primer sequences. You will use the cutadapt QIIME2 plugin for that. 
-Because you have paired-end data, you will have a forward and reverse primer, specified as the parameters `--p-front-f` and `--p-front-r` in below command.
+The next step is to remove any primer sequences. We will use the cutadapt QIIME2 plugin for that. 
+Because we have paired-end data, there is a forward and reverse primer, referenced by the parameters ``--p-front-f`` and ``--p-front-r`` in below command.
 These are already the correct primer sequences used for your data.
 
 .. Tip:: 
 
    Some steps in the QIIME2 workflow can take quite some time. 
-   You can speed things up by running certain processes using more than one cpu. 
+   We can speed things up by running certain processes using more than one cpu. 
    Exactly how many cpus you can select mainly depends on how many you have available on your computer.
 
-For the following command I used `--p-cores 8` (but pls adjust the number of cpus based on how many you have available).
+For the following command, I used ``--p-cores 8`` (but please adjust the number of cpus based on how many you have available!).
 
 .. code-block:: bash
 
@@ -109,10 +109,10 @@ For the following command I used `--p-cores 8` (but pls adjust the number of cpu
      --p-cores 1 \
      --verbose
 
-The output written to your screen shows you the commands that are run as well as some info on the number of reads that are processed and trimmed.
+The output written to the screen shows the commands that are run, as well as some info on the number of reads that are processed and trimmed.
 
 The actual result is not written to the screen but saved as another QIIME2 artifact, which contains the trimmed sequences. 
-Like with prep/demux-seqs.qza from the previous step, you can create a summary vizualisation and view it like so:
+Like with prep/demux-seqs.qza from the previous step, we can create a summary vizualisation and view it like so:
 
 .. code-block:: bash
 

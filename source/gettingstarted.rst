@@ -55,9 +55,9 @@ If it looks like this you are golden:
 
 Activating your conda environment
 -------------------------------------------
-If you installed QIIME2 following the instruction in the General Information, all QIMME2 tools are inside a dedicated conda environment called qiime2-2021.2.
+If you installed QIIME2 following the instruction in the General Information, all QIIME2 tools are inside a dedicated conda environment called qiime2-2021.2.
 As long as you are outside this environment, you will not be able to use the QIIME2 commands. 
-Before starting a session make sure to activate the qiime2-2021.2 environment. 
+Before starting a session, make sure to activate the qiime2-2021.2 environment. 
 You will know whether you are in the correct environment if your prompt starts with ``(qiime2-2021.2)``.
 
 .. important::

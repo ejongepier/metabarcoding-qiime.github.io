@@ -233,16 +233,16 @@ This online utility is also handy to share QIIME2 results with collaborators tha
 </div>
 <div class="section" id="primer-removal">
 <h2>Primer removal<a class="headerlink" href="#primer-removal" title="Permalink to this headline">¶</a></h2>
-<p>The next step is to remove any adapter or primer sequences. You will use the cutadapt QIIME2 plugin for that.
-Because you have paired-end data, you will have a forward and reverse primer, specified as the parameters <cite>–p-front-f</cite> and <cite>–p-front-r</cite> in below command.
+<p>The next step is to remove any primer sequences. We will use the cutadapt QIIME2 plugin for that.
+Because we have paired-end data, there is a forward and reverse primer, referenced by the parameters <code class="docutils literal notranslate"><span class="pre">--p-front-f</span></code> and <code class="docutils literal notranslate"><span class="pre">--p-front-r</span></code> in below command.
 These are already the correct primer sequences used for your data.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Some steps in the QIIME2 workflow can take quite some time.
-You can speed things up by running certain processes using more than one cpu.
+We can speed things up by running certain processes using more than one cpu.
 Exactly how many cpus you can select mainly depends on how many you have available on your computer.</p>
 </div>
-<p>For the following command I used <cite>–p-cores 8</cite> (but pls adjust the number of cpus based on how many you have available).</p>
+<p>For the following command, I used <code class="docutils literal notranslate"><span class="pre">--p-cores</span> <span class="pre">8</span></code> (but please adjust the number of cpus based on how many you have available!).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qiime cutadapt trim-paired <span class="se">\</span>
   --i-demultiplexed-sequences prep/demux-seqs.qza <span class="se">\</span>
   --p-front-f GTGYCAGCMGCCGCGGTAA <span class="se">\</span>
@@ -253,9 +253,9 @@ Exactly how many cpus you can select mainly depends on how many you have availab
   --verbose
 </pre></div>
 </div>
-<p>The output written to your screen shows you the commands that are run as well as some info on the number of reads that are processed and trimmed.</p>
+<p>The output written to the screen shows the commands that are run, as well as some info on the number of reads that are processed and trimmed.</p>
 <p>The actual result is not written to the screen but saved as another QIIME2 artifact, which contains the trimmed sequences.
-Like with prep/demux-seqs.qza from the previous step, you can create a summary vizualisation and view it like so:</p>
+Like with prep/demux-seqs.qza from the previous step, we can create a summary vizualisation and view it like so:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qiime demux summarize <span class="se">\</span>
   --i-data prep/trimmed-seqs.qza <span class="se">\</span>
   --o-visualization prep/trimmed-seqs.qzv
