@@ -1,47 +1,43 @@
 Quality control and feature tabulation
-###########################################
+##########################################
 
 There are many ways in which to enter the QIIME2 workflow. Which one to use depends mostly on whether your data has been preprocessed in any way.
-In your case, sequences were already demultiplexed by the sequencing facility, such that you have two files for each of your samples: 
+In our case, sequences were already demultiplexed by the sequencing facility, such that we have two files for each of the samples: 
 one containing the forward read "R1" and one with the reverse "R2".
-You can import all these sequence files into QIIME2 in one go using a manifest file.
+We can import all these sequence files into QIIME2 in one go using a manifest file.
 
-See the QIIME2 `Importing data <https://docs.qiime2.org/2020.8/tutorials/importing/>`_ tutorial further information.
-Also, check out the `QIIME2 glossary <https://docs.qiime2.org/2019.10/glossary/>`_ 
-and `QIIME2 core concepts <https://docs.qiime2.org/2020.8/concepts/>`_.
+See the QIIME2 `Importing data <https://docs.qiime2.org/2020.8/tutorials/importing/>`_ tutorial information on how to import different input data formats.
 
 Prepping the manifest file
 =======================================
 
-The manifest file includes your sample ids, the path to where each fastq.gz file is stored, and its orientation.
-Because you have paired-end data and thus two files for each sample, you will list each sample twice, once for the forward and once for the reverse orientation.
-This is what the first few lines of a manifest file look like (your sample labels may differ of course): 
+The manifest file includes the sample ids, the path to where each fastq.gz file is stored, and its orientation.
+Because we have paired-end data and thus two files for each sample, we will list each sample twice, once for the forward and once for the reverse orientation.
+This is what the first few lines of the manifest file look like (or run ``head data/MANIFEST.csv``): 
 
 .. code-block:: bash
 
    sample-id,absolute-filepath,direction
-   FLD0001,$PWD/data/Sample-FLD0001-34722_S1_L001_R1_001.fastq.gz,forward
-   FLD0001,$PWD/data/Sample-FLD0001-34722_S1_L001_R2_001.fastq.gz,reverse
-   FLD0002,$PWD/data/Sample-FLD0002-34722_S2_L001_R1_001.fastq.gz,forward
-   FLD0002,$PWD/data/Sample-FLD0002-34722_S2_L001_R2_001.fastq.gz,reverse
+   DUMMY10,$PWD/data/Sample-DUMMY10_R1.fastq.gz,forward
+   DUMMY10,$PWD/data/Sample-DUMMY10_R2.fastq.gz,reverse
+   DUMMY11,$PWD/data/Sample-DUMMY11_R1.fastq.gz,forward
+   DUMMY11,$PWD/data/Sample-DUMMY11_R2.fastq.gz,reverse
    ...
 
-You can find your manifest file under data/MANIFEST.csv as a comma-separated file.
-
-.. important::
-
-   If you are using a laptop, consider to include only a subset of the data during this workshop.
-   You can do this by removing part of the samples from the manifest (but perhaps make a copy first!).
-   The results based on all your samples are also included in your data package, 
-   so you can use those for downstream analyses in stead of running the workflow again.
-
+You can find the manifest file under data/MANIFEST.csv as a comma-separated file.
 
 
 Importing data
 =======================================
 
-You can use your manifest file to import your data into QIIME2. 
-I already selected the appropriate data type and input format for you so just run:
+.. important::
+
+   Don't forget to activate your conda environment before running any QIIME2 command.
+   Just run: ``conda activate qiime2-2021.2``.
+
+
+We can use the manifest file to import the data into QIIME2. 
+I already selected the appropriate data type and input format, so just run:
 
 .. code-block:: bash
 
@@ -54,16 +50,16 @@ I already selected the appropriate data type and input format for you so just ru
 
 This will create a special data object called an 'artifact' which is a zip archive with a '.qza' (QIIME zipped artifact) extension. 
 Artifacts are the main file type used in QIIME2 analyses.
-In addition to the actual data, in this case your fastq.gz files,
-artifacts contain some metadata such as file format, relevant citations and the data provenance. 
+In addition to the actual data, in this case the fastq.gz files,
+artifacts contain metadata such as file format, relevant citations and the data provenance. 
 
-If you quickly want to see what sort of artifact you have run
+If you quickly want to see what sort of artifact it is, run
 
 .. code-block:: bash
 
    qiime tools peek prep/demux-seqs.qza
 
-From the demultiplexed artifact you can create an interactive summary of your sequences.
+From the demultiplexed artifact we can create an interactive summary of the sequences.
 This summary includes the number of sequences that were obtained per sample and the distribution of sequence quality scores at each position.
 
 .. code-block:: bash
@@ -74,13 +70,13 @@ This summary includes the number of sequences that were obtained per sample and 
 
 The result is the other main object in QIIME2: a 'vizualisation', which is a zip archive with '.qzv' (QIIME zipped vizualisation) extension.
 Unlike artifacts, **vizualisations cannot be used as input for further analyses in QIIME2**.
-They are only ment for display, for instance using the `qiime tools view` utility.
+They are only ment for display, for instance using the ``qiime tools view`` utility.
 
 .. code-block:: bash
 
    qiime tools view prep/demux-seqs.qzv
 
-Alternatively, just view it online: https://view.qiime2.org/. 
+Alternatively, we can view it online: https://view.qiime2.org/. 
 This online utility is also handy to share QIIME2 results with collaborators that do not have QIIME2 installed.
 
 .. admonition:: Question 1

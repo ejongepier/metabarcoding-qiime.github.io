@@ -53,6 +53,18 @@ If it looks like this you are golden:
 
    For the remainder of the tutorial, make sure you always run the commands from the metabarcoding-qiime2-datapackage-v2021.06 directory, otherwise you will get a ``No such file or directory`` error.
 
+Activating your conda environment
+-------------------------------------------
+If you installed QIIME2 following the instruction in the General Information, all QIMME2 tools are inside a dedicated conda environment called qiime2-2021.2.
+As long as you are outside this environment, you will not be able to use the QIIME2 commands. 
+Before starting a session make sure to activate the qiime2-2021.2 environment. 
+You will know whether you are in the correct environment if your prompt starts with ``(qiime2-2021.2)``.
+
+.. important::
+
+   Before starting your analyses activate your conda environment:
+   ``conda activate qiime2-2021.2``
+
 
 Skipping steps
 -------------------------------------------

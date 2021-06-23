@@ -88,6 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#windows-subsystem-for-linux-users">Windows subsystem for Linux - users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-use-this-tutorial">How to use this tutorial?</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#where-to-start">Where to start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activating-your-conda-environment">Activating your conda environment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#skipping-steps">Skipping steps</a></li>
 </ul>
 </li>
@@ -201,6 +202,18 @@ If it looks like this you are golden:</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>For the remainder of the tutorial, make sure you always run the commands from the metabarcoding-qiime2-datapackage-v2021.06 directory, otherwise you will get a <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code> error.</p>
+</div>
+</div>
+<div class="section" id="activating-your-conda-environment">
+<h3>Activating your conda environment<a class="headerlink" href="#activating-your-conda-environment" title="Permalink to this headline">¶</a></h3>
+<p>If you installed QIIME2 following the instruction in the General Information, all QIMME2 tools are inside a dedicated conda environment called qiime2-2021.2.
+As long as you are outside this environment, you will not be able to use the QIIME2 commands.
+Before starting a session make sure to activate the qiime2-2021.2 environment.
+You will know whether you are in the correct environment if your prompt starts with <code class="docutils literal notranslate"><span class="pre">(qiime2-2021.2)</span></code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Before starting your analyses activate your conda environment:
+<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">qiime2-2021.2</span></code></p>
 </div>
 </div>
 <div class="section" id="skipping-steps">

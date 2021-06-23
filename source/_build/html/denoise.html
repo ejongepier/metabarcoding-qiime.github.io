@@ -167,38 +167,34 @@
   <div class="section" id="quality-control-and-feature-tabulation">
 <h1>Quality control and feature tabulation<a class="headerlink" href="#quality-control-and-feature-tabulation" title="Permalink to this headline">¶</a></h1>
 <p>There are many ways in which to enter the QIIME2 workflow. Which one to use depends mostly on whether your data has been preprocessed in any way.
-In your case, sequences were already demultiplexed by the sequencing facility, such that you have two files for each of your samples:
+In our case, sequences were already demultiplexed by the sequencing facility, such that we have two files for each of the samples:
 one containing the forward read “R1” and one with the reverse “R2”.
-You can import all these sequence files into QIIME2 in one go using a manifest file.</p>
-<p>See the QIIME2 <a class="reference external" href="https://docs.qiime2.org/2020.8/tutorials/importing/">Importing data</a> tutorial further information.
-Also, check out the <a class="reference external" href="https://docs.qiime2.org/2019.10/glossary/">QIIME2 glossary</a>
-and <a class="reference external" href="https://docs.qiime2.org/2020.8/concepts/">QIIME2 core concepts</a>.</p>
+We can import all these sequence files into QIIME2 in one go using a manifest file.</p>
+<p>See the QIIME2 <a class="reference external" href="https://docs.qiime2.org/2020.8/tutorials/importing/">Importing data</a> tutorial information on how to import different input data formats.</p>
 <div class="section" id="prepping-the-manifest-file">
 <h2>Prepping the manifest file<a class="headerlink" href="#prepping-the-manifest-file" title="Permalink to this headline">¶</a></h2>
-<p>The manifest file includes your sample ids, the path to where each fastq.gz file is stored, and its orientation.
-Because you have paired-end data and thus two files for each sample, you will list each sample twice, once for the forward and once for the reverse orientation.
-This is what the first few lines of a manifest file look like (your sample labels may differ of course):</p>
+<p>The manifest file includes the sample ids, the path to where each fastq.gz file is stored, and its orientation.
+Because we have paired-end data and thus two files for each sample, we will list each sample twice, once for the forward and once for the reverse orientation.
+This is what the first few lines of the manifest file look like (or run <code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">data/MANIFEST.csv</span></code>):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sample-id,absolute-filepath,direction
-FLD0001,<span class="nv">$PWD</span>/data/Sample-FLD0001-34722_S1_L001_R1_001.fastq.gz,forward
-FLD0001,<span class="nv">$PWD</span>/data/Sample-FLD0001-34722_S1_L001_R2_001.fastq.gz,reverse
-FLD0002,<span class="nv">$PWD</span>/data/Sample-FLD0002-34722_S2_L001_R1_001.fastq.gz,forward
-FLD0002,<span class="nv">$PWD</span>/data/Sample-FLD0002-34722_S2_L001_R2_001.fastq.gz,reverse
+DUMMY10,<span class="nv">$PWD</span>/data/Sample-DUMMY10_R1.fastq.gz,forward
+DUMMY10,<span class="nv">$PWD</span>/data/Sample-DUMMY10_R2.fastq.gz,reverse
+DUMMY11,<span class="nv">$PWD</span>/data/Sample-DUMMY11_R1.fastq.gz,forward
+DUMMY11,<span class="nv">$PWD</span>/data/Sample-DUMMY11_R2.fastq.gz,reverse
 ...
 </pre></div>
 </div>
-<p>You can find your manifest file under data/MANIFEST.csv as a comma-separated file.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>If you are using a laptop, consider to include only a subset of the data during this workshop.
-You can do this by removing part of the samples from the manifest (but perhaps make a copy first!).
-The results based on all your samples are also included in your data package,
-so you can use those for downstream analyses in stead of running the workflow again.</p>
-</div>
+<p>You can find the manifest file under data/MANIFEST.csv as a comma-separated file.</p>
 </div>
 <div class="section" id="id1">
 <h2>Importing data<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>You can use your manifest file to import your data into QIIME2.
-I already selected the appropriate data type and input format for you so just run:</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Don’t forget to activate your conda environment before running any QIIME2 command.
+Just run: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">qiime2-2021.2</span></code>.</p>
+</div>
+<p>We can use the manifest file to import the data into QIIME2.
+I already selected the appropriate data type and input format, so just run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p prep
 qiime tools import <span class="se">\</span>
   --type <span class="s1">&#39;SampleData[PairedEndSequencesWithQuality]&#39;</span> <span class="se">\</span>
@@ -209,13 +205,13 @@ qiime tools import <span class="se">\</span>
 </div>
 <p>This will create a special data object called an ‘artifact’ which is a zip archive with a ‘.qza’ (QIIME zipped artifact) extension.
 Artifacts are the main file type used in QIIME2 analyses.
-In addition to the actual data, in this case your fastq.gz files,
-artifacts contain some metadata such as file format, relevant citations and the data provenance.</p>
-<p>If you quickly want to see what sort of artifact you have run</p>
+In addition to the actual data, in this case the fastq.gz files,
+artifacts contain metadata such as file format, relevant citations and the data provenance.</p>
+<p>If you quickly want to see what sort of artifact it is, run</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qiime tools peek prep/demux-seqs.qza
 </pre></div>
 </div>
-<p>From the demultiplexed artifact you can create an interactive summary of your sequences.
+<p>From the demultiplexed artifact we can create an interactive summary of the sequences.
 This summary includes the number of sequences that were obtained per sample and the distribution of sequence quality scores at each position.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qiime demux summarize <span class="se">\</span>
   --i-data prep/demux-seqs.qza <span class="se">\</span>
@@ -224,11 +220,11 @@ This summary includes the number of sequences that were obtained per sample and 
 </div>
 <p>The result is the other main object in QIIME2: a ‘vizualisation’, which is a zip archive with ‘.qzv’ (QIIME zipped vizualisation) extension.
 Unlike artifacts, <strong>vizualisations cannot be used as input for further analyses in QIIME2</strong>.
-They are only ment for display, for instance using the <cite>qiime tools view</cite> utility.</p>
+They are only ment for display, for instance using the <code class="docutils literal notranslate"><span class="pre">qiime</span> <span class="pre">tools</span> <span class="pre">view</span></code> utility.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qiime tools view prep/demux-seqs.qzv
 </pre></div>
 </div>
-<p>Alternatively, just view it online: <a class="reference external" href="https://view.qiime2.org/">https://view.qiime2.org/</a>.
+<p>Alternatively, we can view it online: <a class="reference external" href="https://view.qiime2.org/">https://view.qiime2.org/</a>.
 This online utility is also handy to share QIIME2 results with collaborators that do not have QIIME2 installed.</p>
 <div class="admonition-question-1 admonition">
 <p class="admonition-title">Question 1</p>
