@@ -183,7 +183,7 @@ It only contains information relevant for cluster usage. For detailed desciption
 <h2>Some preparatory steps<a class="headerlink" href="#some-preparatory-steps" title="Permalink to this headline">¶</a></h2>
 <p>Before getting started, lets collect the data.
 There is a copy on the amplicomics group share which you can use, for instance by creating a link to your current directory on the Crunchomics cluster, like so:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ln -s /zfs/omics/projects/amplicomics/demodata/metabarcoding-qiime-datapackage-v2021.06/data ./
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ln -s /zfs/omics/projects/amplicomics/demodata/metabarcoding-qiime2-datapackage-v2021.06/data ./
 </pre></div>
 </div>
 <div class="section" id="setup-your-environment">
@@ -223,6 +223,10 @@ If you like to add another database or a new release, just contact <a class="ref
 <span class="nb">export</span> <span class="nv">DBPREFIX</span><span class="o">=</span><span class="s2">&quot;SILVA_138_99_16S&quot;</span>
 </pre></div>
 </div>
+<p>Now that we have defined all these variables, we can simply refer to them using the $ notation. To print the value of DBPREFIX:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="nv">$DBPREFIX</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="setup-your-working-directory">
 <h3>Setup your working directory<a class="headerlink" href="#setup-your-working-directory" title="Permalink to this headline">¶</a></h3>
@@ -253,9 +257,9 @@ For more <code class="docutils literal notranslate"><span class="pre">srun</span
 <p>When running such a <code class="docutils literal notranslate"><span class="pre">srun</span></code>-command, 3 things will happen:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>The job scheduler adds your job to the queue (output: “srun: job xxxxx queued and waiting for resources”)</p></li>
-<li><p>Once the requested resources are found (here, 1 cpu), they will be allocated to your job (output: “srun: job xxxxx has been allocated resources”)</p></li>
-<li><p>Once the resources are allocated, your job will start (output: depends on which command you run).</p></li>
+<li><p>The job scheduler adds your job to the queue.</p></li>
+<li><p>Once the requested resources are found (here, 1 cpu), they will be allocated to your job.</p></li>
+<li><p>Once the resources are allocated, your job will start.</p></li>
 </ol>
 </div></blockquote>
 <p>Now, let create the vizualisation:</p>
@@ -308,7 +312,7 @@ Please mind though that to avoid overloading the head node you should never run 
 <h4>Step 1. Joining read pairs<a class="headerlink" href="#step-1-joining-read-pairs" title="Permalink to this headline">¶</a></h4>
 <p>Using 2 cpus, this takes ca. 3m1.940s. On a larger data set you may want to use more <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code>.
 Note that for the <code class="docutils literal notranslate"><span class="pre">qiime</span> <span class="pre">cutadapt</span> <span class="pre">trim-paired</span></code>-command you used <code class="docutils literal notranslate"><span class="pre">p-cores</span></code> while here you need <code class="docutils literal notranslate"><span class="pre">p-threads</span></code>.
-Pretty annoying that this is not consitent, but that simply is the way the developers defined their parameters
+Pretty annoying that this is not consistent, but that simply is the way the developers defined their parameters
 which often differs. Check-out the help function of the command you like to run to learn more.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun -n <span class="m">1</span> --cpus-per-task <span class="m">2</span> qiime vsearch join-pairs <span class="se">\</span>
   --i-demultiplexed-seqs prep/trimmed-seqs.qza <span class="se">\</span>
@@ -357,7 +361,7 @@ how-to-view-this-qzv deblur/filt-stats.qzv
 Also note I now explicitely defined a memory allocation of 16GB. This is the total amount of RAM
 you expect to need for this job (+ a bit more to be on the safe side). How much you need is not
 always easy to predict and requires some experience/trial and error.
-As a general rule of thumb: if you get an <code class="docutils literal notranslate"><span class="pre">Out</span> <span class="pre">Of</span> <span class="pre">Memory</span></code> error, double it and try again.
+As a rule of thumb: if you get an <code class="docutils literal notranslate"><span class="pre">Out</span> <span class="pre">Of</span> <span class="pre">Memory</span></code> error, double it and try again.
 Note that you can also define <code class="docutils literal notranslate"><span class="pre">mem-per-cpu</span></code>, which may be easier to work with if you often change the
 number of cpus between analyses.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun -n <span class="m">1</span> --cpus-per-task <span class="m">8</span> --mem<span class="o">=</span>16GB qiime deblur denoise-16S <span class="se">\</span>
@@ -394,7 +398,7 @@ how-to-view-this-qzv deblur/deblur-reprseqs.qzv
 </div>
 <div class="section" id="dada2-denoise">
 <h3>DADA2-denoise<a class="headerlink" href="#dada2-denoise" title="Permalink to this headline">¶</a></h3>
-<p>Dada2 performs filtering, joining and denoising all with one single command, and therefor takes longer to run.
+<p>DADA2 performs filtering, joining and denoising all with one single command, and therefor takes longer to run.
 Here, it takes ca. 30m5.334s using 8 cpus. It is tempting to just increase the number of cpus when impatient,
 but please note that not all commands are very efficient at running more jobs in parallel (i.e. on multiple cpus).
 The reason often is that the rate-limiting step in the workflow is unable to use multiple cpus, so all but one are idle.</p>

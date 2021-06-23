@@ -13,7 +13,7 @@ There is a copy on the amplicomics group share which you can use, for instance b
 
 .. code-block:: bash
 
-   ln -s /zfs/omics/projects/amplicomics/demodata/metabarcoding-qiime-datapackage-v2021.06/data ./
+   ln -s /zfs/omics/projects/amplicomics/demodata/metabarcoding-qiime2-datapackage-v2021.06/data ./
 
 
 Setup your environment
@@ -67,7 +67,12 @@ If you like to add another database or a new release, just contact `Evelien Jong
    export DBTAX="/zfs/omics/projects/amplicomics/databases/SILVA/SILVA_138_QIIME/data/silva-138-99-tax.qza"
    export DBPREFIX="SILVA_138_99_16S"
 
+Now that we have defined all these variables, we can simply refer to them using the $ notation. To print the value of DBPREFIX:
 
+.. code-block:: bash
+
+   echo $DBPREFIX
+ 
 
 Setup your working directory
 ---------------------------------------------
@@ -104,11 +109,11 @@ For more ``srun`` parameters and options check out the help function (``srun --h
 
 When running such a ``srun``-command, 3 things will happen:
 
-   1. The job scheduler adds your job to the queue (output: "srun: job xxxxx queued and waiting for resources")
+   1. The job scheduler adds your job to the queue.
 
-   2. Once the requested resources are found (here, 1 cpu), they will be allocated to your job (output: "srun: job xxxxx has been allocated resources")
+   2. Once the requested resources are found (here, 1 cpu), they will be allocated to your job.
 
-   3. Once the resources are allocated, your job will start (output: depends on which command you run).
+   3. Once the resources are allocated, your job will start.
 
 Now, let create the vizualisation:
 
@@ -173,7 +178,7 @@ Step 1. Joining read pairs
 
 Using 2 cpus, this takes ca. 3m1.940s. On a larger data set you may want to use more ``cpus-per-task``.
 Note that for the ``qiime cutadapt trim-paired``-command you used ``p-cores`` while here you need ``p-threads``.
-Pretty annoying that this is not consitent, but that simply is the way the developers defined their parameters
+Pretty annoying that this is not consistent, but that simply is the way the developers defined their parameters
 which often differs. Check-out the help function of the command you like to run to learn more.
 
 .. code-block:: bash
@@ -231,7 +236,7 @@ With 8 cpus the following takes ca. 6m56.972s. You may want to increase the no. 
 Also note I now explicitely defined a memory allocation of 16GB. This is the total amount of RAM
 you expect to need for this job (+ a bit more to be on the safe side). How much you need is not
 always easy to predict and requires some experience/trial and error.
-As a general rule of thumb: if you get an ``Out Of Memory`` error, double it and try again.
+As a rule of thumb: if you get an ``Out Of Memory`` error, double it and try again.
 Note that you can also define ``mem-per-cpu``, which may be easier to work with if you often change the
 number of cpus between analyses.
 
@@ -270,7 +275,7 @@ number of cpus between analyses.
 DADA2-denoise
 --------------------------------------------
 
-Dada2 performs filtering, joining and denoising all with one single command, and therefor takes longer to run.
+DADA2 performs filtering, joining and denoising all with one single command, and therefor takes longer to run.
 Here, it takes ca. 30m5.334s using 8 cpus. It is tempting to just increase the number of cpus when impatient,
 but please note that not all commands are very efficient at running more jobs in parallel (i.e. on multiple cpus).
 The reason often is that the rate-limiting step in the workflow is unable to use multiple cpus, so all but one are idle.

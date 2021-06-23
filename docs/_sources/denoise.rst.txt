@@ -262,7 +262,7 @@ Now lets prepare for the next step where the actual denoising is performed:
 .. admonition:: Question 6
 
    | What happends to the quality of the fragments that are longer than the presumed fragment size? Why?
-   | What is an appropriate value for `--p-trim-length`?
+   | What is an appropriate value for ``--p-trim-length``?
    | What proportion of your fragments will be retained approximately using this value?
    | How many bases will be trimmed off from fragments of median length?
 
@@ -371,11 +371,11 @@ DADA2 denoise
 -------------------------------
 
 The DADA2-denoiser can be run using a single command because joining and filtering will be done automatically.
-However, you need to decide on two important parameter values: `--p-trunc-len-f` and `--p-trunc-len-r`.
+However, you need to decide on two important parameter values: ``--p-trunc-len-f`` and ``--p-trunc-len-r``.
 
 .. admonition:: Question 9
 
-   Check out the `dada2 denoise-paired` help function to find out what `--p-trunc-len-f` and `--p-trunc-len-r` are.
+   Check out the ``qiime dada2 denoise-paired`` help function to find out what ``--p-trunc-len-f`` and ``--p-trunc-len-r`` are.
    Which of the previous vizualisations can help you decide on appropriate values for these parameters? 
    What do you think happens if you set these values at, say, 185 each?
 
@@ -383,20 +383,19 @@ Lets run dada2, note that I used 16 cpus, which you may have to tune down a bit.
 
 .. code-block:: bash
 
-   mkdir -p dada2
    qiime dada2 denoise-paired \
      --i-demultiplexed-seqs prep/trimmed-seqs.qza \
      --p-trim-left-f 0 \
      --p-trim-left-r 0 \
      --p-trunc-len-f 230 \
      --p-trunc-len-r 220 \
-     --p-n-threads 16 \
+     --p-n-threads 1 \
      --o-table dada2/dada2-table.qza \
      --o-representative-sequences dada2/dada2-reprseqs.qza \
      --o-denoising-stats dada2/dada2-stats.qza \
      --verbose
 
-This will take some time, so lets keep it running and pick this up again tomorrow morning.
+This will take some time, so lets keep it running and pick this up again this afternoon or tomorrow morning.
 Then create some vizualisations:
 
 .. code-block:: bash
