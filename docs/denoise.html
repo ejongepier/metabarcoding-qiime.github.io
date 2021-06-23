@@ -290,16 +290,16 @@ In the following sections you will run both.</p>
 <p>The Deblur-denoising procedure is split up in 3 steps.</p>
 <div class="section" id="step-1-join-read-pairs">
 <h4>Step 1. Join read pairs<a class="headerlink" href="#step-1-join-read-pairs" title="Permalink to this headline">¶</a></h4>
-<p>First, join your forward and reverse reads into a single sequence spanning the entire fragment you amplified.
-This joining is based on the overlap between your forward and reverse reads.</p>
+<p>First, join the forward and reverse reads into a single sequence spanning the entire target region.
+This joining is based on the overlap between the forward and reverse reads.</p>
 <p>Lets first do some math:</p>
 <div class="admonition-question-3 admonition">
 <p class="admonition-title">Question 3</p>
 <div class="line-block">
-<div class="line">a. What is the length of your trimmed forward and reverse reads? (Tip: check out the length of the primer sequences used in the <cite>qiime cutadapt trim-paired</cite> command)</div>
-<div class="line">b. What is the length of the fragment that was sequenced? (Tip: the primers you used were 515F-926R)</div>
-<div class="line">c. What was the length of the adapter trimmed fragment?</div>
-<div class="line">d. Given the above, how much overlap do you have between your forward and reverse reads?</div>
+<div class="line">a. What is the length of your trimmed forward and reverse reads? (Tip: check out the length of the primer sequences used in the <code class="docutils literal notranslate"><span class="pre">qiime</span> <span class="pre">cutadapt</span> <span class="pre">trim-paired</span></code> command)</div>
+<div class="line">b. What is the length of the fragment that was sequenced? (Tip: the primers that were used were 515F-926R)</div>
+<div class="line">c. What was the length of the primer trimmed fragment (i.e. target region)?</div>
+<div class="line">d. Given the above, how much overlap do we have between your forward and reverse reads?</div>
 <div class="line">e. Can you confirm the numbers in question a-b by viewing the appropriate vizualisations?</div>
 </div>
 </div>
@@ -324,18 +324,18 @@ qiime tools view deblur/joined-seqs.qzv
 <div class="admonition-question-4 admonition">
 <p class="admonition-title">Question 4</p>
 <div class="line-block">
-<div class="line">Can you confirm the fragment length you computed in question 3c.?</div>
-<div class="line">What happends to the quality in the middle of the joined fragments and why?</div>
+<div class="line">Can you confirm the target region length you computed in question 3c.?</div>
+<div class="line">What happends to the quality in the middle of the joined reads and why?</div>
 </div>
 </div>
 </div>
 <div class="section" id="step-2-quality-filter">
 <h4>Step 2. Quality filter<a class="headerlink" href="#step-2-quality-filter" title="Permalink to this headline">¶</a></h4>
-<p>Your fastq.gz files not only contain the DNA sequences but also a quality score for each of the nucleotides.
+<p>The fastq.gz files not only contain the DNA sequences but also a quality score for each of the nucleotides.
 These quality scores are used by deblur-denoise to apply an initial quality filtering.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>With qiime2-2020.8, the following command with create a warning (YAMLLoadWarning), which you can ignore.</p>
+<p>With qiime2-2021.2, the following command will produce a <code class="docutils literal notranslate"><span class="pre">YAMLLoadWarning</span></code> warning, which you can ignore.</p>
 </div>
 <p>To perform quality filtering, just run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qiime quality-filter q-score <span class="se">\</span>
@@ -362,10 +362,10 @@ In fact, when you look at the trimming stats, nothing really seems to have happe
 qiime tools view deblur/filt-stats.qzv
 </pre></div>
 </div>
-<p>This is somewhat unusual but so is the quality of your data. In fact, I have not come across sequencing data that was of such high quality.</p>
+<p>This is somewhat unusual but so is the quality of this particular data set. Just be prepared that your own data may be of lower quality.</p>
 <div class="admonition-question-5 admonition">
 <p class="admonition-title">Question 5</p>
-<p>Have a look at the <cite>qiime quality-filter q-score</cite> help function and see if you can find an explanation why no quality filtering was performed:</p>
+<p>Have a look at the <code class="docutils literal notranslate"><span class="pre">qiime</span> <span class="pre">quality-filter</span> <span class="pre">q-score</span></code> help function and see if you can find an explanation why no quality filtering was performed:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qiime quality-filter q-score --help
 </pre></div>
 </div>
@@ -373,8 +373,8 @@ qiime tools view deblur/filt-stats.qzv
 <p>Now lets prepare for the next step where the actual denoising is performed:</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>When you continue with deblure-denoise in the next step, you need to truncate your fragments such that they are all of the same length.
-The position at which sequences are truncated is specified by the <cite>–p-trim-length</cite> parameter.
+<p>When we continue with deblur-denoise in the next step, you need to truncate your fragments such that they are all of the same length.
+The position at which sequences are truncated is specified by the <code class="docutils literal notranslate"><span class="pre">--p-trim-length</span></code> parameter.
 Any sequence that is shorter than this value will be lost from your analyses.
 Any sequence that is longer will be truncated at this position.</p>
 </div>
@@ -391,9 +391,9 @@ Any sequence that is longer will be truncated at this position.</p>
 <div class="section" id="step-3-denoise">
 <h4>Step 3. Denoise<a class="headerlink" href="#step-3-denoise" title="Permalink to this headline">¶</a></h4>
 <p>Run deblur-denoise on the joined and quality trimmed sequences.
-I selected a <cite>–p-trim-length</cite> of 370, because that resulted in minimal data loss.
+I selected a <code class="docutils literal notranslate"><span class="pre">--p-trim-length</span></code> of 370, because that resulted in minimal data loss.
 That is, only &lt;9% of the reads were discarded for being too short, and only 4 bases were trimmed off from sequences of median length.
-Again, I used 8 cpus here, but you may have to modify that (<cite>–p-jobs-to-start 8</cite>)</p>
+Again, I used 8 cpus here, but you may have to modify that (<code class="docutils literal notranslate"><span class="pre">--p-jobs-to-start</span> <span class="pre">8</span></code>)</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qiime deblur denoise-16S <span class="se">\</span>
   --i-demultiplexed-seqs deblur/filt-seqs.qza <span class="se">\</span>
   --p-trim-length <span class="m">370</span> <span class="se">\</span>
@@ -401,7 +401,7 @@ Again, I used 8 cpus here, but you may have to modify that (<cite>–p-jobs-to-s
   --o-table deblur/deblur-table.qza <span class="se">\</span>
   --p-sample-stats <span class="se">\</span>
   --o-stats deblur/deblur-stats.qza <span class="se">\</span>
-  --p-jobs-to-start <span class="m">8</span> <span class="se">\</span>
+  --p-jobs-to-start <span class="m">1</span> <span class="se">\</span>
   --verbose
 </pre></div>
 </div>
@@ -411,7 +411,7 @@ Again, I used 8 cpus here, but you may have to modify that (<cite>–p-jobs-to-s
 <li><p>A representative sequences artifact with one single fasta sequence for each of the features in the feature table.</p></li>
 <li><p>A stats artifact with details of how many reads passed each filtering step of the deblur procedure.</p></li>
 </ol>
-<p>Let start with converting the stats artifact into a vizualisations which you can then view again, like so:</p>
+<p>Let start with converting the stats artifact into a vizualisations which we can then view again, like so:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qiime deblur visualize-stats <span class="se">\</span>
   --i-deblur-stats deblur/deblur-stats.qza <span class="se">\</span>
   --o-visualization deblur/deblur-stats.qzv
@@ -419,7 +419,7 @@ Again, I used 8 cpus here, but you may have to modify that (<cite>–p-jobs-to-s
 qiime tools view deblur/deblur-stats.qzv
 </pre></div>
 </div>
-<p>The resulting table shows you how many sequences per sample passed the deblur quality check, including the total number and the number of unique sequences.
+<p>The resulting table shows how many sequences per sample passed the deblur quality check, including the total number and the number of unique sequences.
 Just hoover over the table headers to get more information. Note that artifact here is used in the traditional sense of the word.
 It has nothing to do with the file type ‘artifact’.</p>
 <p>To view the feature table summary statistics, just run:</p>
@@ -432,8 +432,8 @@ qiime tools view deblur/deblur-table.qzv
 </div>
 <p>Particularly interesting is the <cite>Interactive sample detail page</cite>.
 This shows you the number of features per sample.
-If there is large variation in this number between samples, it is often recommended to standardize your data by rarefaction.
-Rarefaction will not be treated in detail in the tutorial but the idea is layed out below.</p>
+If there is large variation in this number between samples, it means it is difficult to directly compare samples. In that case it is often recommended to standardize your data by for instance rarefaction.
+Rarefaction will not be treated in detail in the tutorial, but the idea is laid out below.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Rarefaction in a nut shell: for each sample you only include as many features as you have available for the smallest sample.
@@ -441,13 +441,13 @@ Which features those are is determined by chance (i.e. subsample the features wi
 If your smallest sample has very few features, you need to discard a lot of features from the other samples, which is of course a pity.
 In such situations it may be better to just exclude the small sample entirely.</p>
 </div>
-<p>Use the sample depth slider to see the effect of rarefying your data up to a minimum sample depth.</p>
+<p>Use the sample depth slider to see the effect of rarefying the data up to a minimum sampling depth.</p>
 <div class="admonition-question-7 admonition">
 <p class="admonition-title">Question 7</p>
 <div class="line-block">
-<div class="line">What would be the rarefaction depth based on all your samples?</div>
-<div class="line">How many features would you discard at this rarefaction depth?</div>
-<div class="line">Is there a better option given your data and what is the consequence in terms of the number of features and samples retained?</div>
+<div class="line">What would be the rarefaction depth if your want to retain all your samples?</div>
+<div class="line">How many features (ASVs) would you discard at this rarefaction depth?</div>
+<div class="line">Is there a better option given the data? What would then be the consequence for the number of features and samples retained?</div>
 </div>
 </div>
 <p>Lastly, lets check out the representative sequences:</p>
@@ -462,14 +462,13 @@ qiime tools view deblur/deblur-reprseqs.qzv
 Just click on the sequence and then the View report button.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The NCBI-BLAST links are useful for assessing the taxonomic affiliation and alignment of individual features to the reference database.
-Results of the “top hits” from a simple BLAST search such as this are known to be poor predictors of the true taxonomic affiliations of these features,
+<p>Results of the “top hits” from a simple BLAST search such as this are known to be poor predictors of the true taxonomic affiliations of these features,
 especially in cases where the closest reference sequence in the database is not very similar to the sequence that you are using as a query.
 Instead, use automated taxonomic classification (see tutorial for tomorrow).</p>
 </div>
 <div class="admonition-question-8 admonition">
 <p class="admonition-title">Question 8</p>
-<p>What is the best BLAST hit for the most abundant feature in your data set?</p>
+<p>What is the best BLAST hit for the most abundant feature in the data set?</p>
 </div>
 </div>
 </div>

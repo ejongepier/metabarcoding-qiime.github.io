@@ -156,17 +156,17 @@ The Deblur-denoising procedure is split up in 3 steps.
 Step 1. Join read pairs 
 ........................................ 
 
-First, join your forward and reverse reads into a single sequence spanning the entire fragment you amplified.
-This joining is based on the overlap between your forward and reverse reads.
+First, join the forward and reverse reads into a single sequence spanning the entire target region.
+This joining is based on the overlap between the forward and reverse reads.
 
 Lets first do some math:
 
 .. admonition:: Question 3
 
-   | a. What is the length of your trimmed forward and reverse reads? (Tip: check out the length of the primer sequences used in the `qiime cutadapt trim-paired` command)
-   | b. What is the length of the fragment that was sequenced? (Tip: the primers you used were 515F-926R)
-   | c. What was the length of the adapter trimmed fragment?
-   | d. Given the above, how much overlap do you have between your forward and reverse reads?
+   | a. What is the length of your trimmed forward and reverse reads? (Tip: check out the length of the primer sequences used in the ``qiime cutadapt trim-paired`` command)
+   | b. What is the length of the fragment that was sequenced? (Tip: the primers that were used were 515F-926R)
+   | c. What was the length of the primer trimmed fragment (i.e. target region)?
+   | d. Given the above, how much overlap do we have between your forward and reverse reads?
    | e. Can you confirm the numbers in question a-b by viewing the appropriate vizualisations?
 
 Now that you have checked whether there is enough overlap to reliably join your forward and reverse reads, lets do the joining.
@@ -194,19 +194,19 @@ Lets summarize and view again:
 
 .. admonition:: Question 4
 
-   | Can you confirm the fragment length you computed in question 3c.?
-   | What happends to the quality in the middle of the joined fragments and why?
+   | Can you confirm the target region length you computed in question 3c.?
+   | What happends to the quality in the middle of the joined reads and why?
 
 
 Step 2. Quality filter
 ........................................
 
-Your fastq.gz files not only contain the DNA sequences but also a quality score for each of the nucleotides.
+The fastq.gz files not only contain the DNA sequences but also a quality score for each of the nucleotides.
 These quality scores are used by deblur-denoise to apply an initial quality filtering.
 
 .. warning::
 
-   With qiime2-2020.8, the following command with create a warning (YAMLLoadWarning), which you can ignore.
+   With qiime2-2021.2, the following command will produce a ``YAMLLoadWarning`` warning, which you can ignore.
 
 To perform quality filtering, just run:
 
@@ -239,11 +239,11 @@ In fact, when you look at the trimming stats, nothing really seems to have happe
 
    qiime tools view deblur/filt-stats.qzv
 
-This is somewhat unusual but so is the quality of your data. In fact, I have not come across sequencing data that was of such high quality.
+This is somewhat unusual but so is the quality of this particular data set. Just be prepared that your own data may be of lower quality.
 
 .. admonition:: Question 5
 
-   Have a look at the `qiime quality-filter q-score` help function and see if you can find an explanation why no quality filtering was performed:
+   Have a look at the ``qiime quality-filter q-score`` help function and see if you can find an explanation why no quality filtering was performed:
 
    .. code-block:: bash
 
@@ -253,8 +253,8 @@ Now lets prepare for the next step where the actual denoising is performed:
 
 .. important::
 
-   When you continue with deblure-denoise in the next step, you need to truncate your fragments such that they are all of the same length.
-   The position at which sequences are truncated is specified by the `--p-trim-length` parameter.
+   When we continue with deblur-denoise in the next step, you need to truncate your fragments such that they are all of the same length.
+   The position at which sequences are truncated is specified by the ``--p-trim-length`` parameter.
    Any sequence that is shorter than this value will be lost from your analyses.
    Any sequence that is longer will be truncated at this position.
 
@@ -272,9 +272,9 @@ Step 3. Denoise
 ........................................
 
 Run deblur-denoise on the joined and quality trimmed sequences.
-I selected a `--p-trim-length` of 370, because that resulted in minimal data loss.
+I selected a ``--p-trim-length`` of 370, because that resulted in minimal data loss.
 That is, only <9% of the reads were discarded for being too short, and only 4 bases were trimmed off from sequences of median length.
-Again, I used 8 cpus here, but you may have to modify that (`--p-jobs-to-start 8`)
+Again, I used 8 cpus here, but you may have to modify that (``--p-jobs-to-start 8``)
 
 .. code-block:: bash
 
@@ -285,7 +285,7 @@ Again, I used 8 cpus here, but you may have to modify that (`--p-jobs-to-start 8
      --o-table deblur/deblur-table.qza \
      --p-sample-stats \
      --o-stats deblur/deblur-stats.qza \
-     --p-jobs-to-start 8 \
+     --p-jobs-to-start 1 \
      --verbose
 
 This command results in three output files: 
@@ -296,7 +296,7 @@ This command results in three output files:
 
 #. A stats artifact with details of how many reads passed each filtering step of the deblur procedure.
 
-Let start with converting the stats artifact into a vizualisations which you can then view again, like so:
+Let start with converting the stats artifact into a vizualisations which we can then view again, like so:
 
 .. code-block:: bash
 
@@ -306,7 +306,7 @@ Let start with converting the stats artifact into a vizualisations which you can
 
    qiime tools view deblur/deblur-stats.qzv
 
-The resulting table shows you how many sequences per sample passed the deblur quality check, including the total number and the number of unique sequences.
+The resulting table shows how many sequences per sample passed the deblur quality check, including the total number and the number of unique sequences.
 Just hoover over the table headers to get more information. Note that artifact here is used in the traditional sense of the word. 
 It has nothing to do with the file type 'artifact'.
  
@@ -323,8 +323,8 @@ To view the feature table summary statistics, just run:
 
 Particularly interesting is the `Interactive sample detail page`.
 This shows you the number of features per sample.
-If there is large variation in this number between samples, it is often recommended to standardize your data by rarefaction.
-Rarefaction will not be treated in detail in the tutorial but the idea is layed out below.
+If there is large variation in this number between samples, it means it is difficult to directly compare samples. In that case it is often recommended to standardize your data by for instance rarefaction.
+Rarefaction will not be treated in detail in the tutorial, but the idea is laid out below.
 
 .. note::
 
@@ -333,13 +333,13 @@ Rarefaction will not be treated in detail in the tutorial but the idea is layed 
    If your smallest sample has very few features, you need to discard a lot of features from the other samples, which is of course a pity.
    In such situations it may be better to just exclude the small sample entirely.
 
-Use the sample depth slider to see the effect of rarefying your data up to a minimum sample depth.
+Use the sample depth slider to see the effect of rarefying the data up to a minimum sampling depth.
 
 .. admonition:: Question 7
 
-   | What would be the rarefaction depth based on all your samples?
-   | How many features would you discard at this rarefaction depth?
-   | Is there a better option given your data and what is the consequence in terms of the number of features and samples retained? 
+   | What would be the rarefaction depth if your want to retain all your samples?
+   | How many features (ASVs) would you discard at this rarefaction depth?
+   | Is there a better option given the data? What would then be the consequence for the number of features and samples retained? 
 
 
 Lastly, lets check out the representative sequences:
@@ -357,14 +357,13 @@ Just click on the sequence and then the View report button.
 
 .. important::
 
-   The NCBI-BLAST links are useful for assessing the taxonomic affiliation and alignment of individual features to the reference database. 
    Results of the “top hits” from a simple BLAST search such as this are known to be poor predictors of the true taxonomic affiliations of these features, 
    especially in cases where the closest reference sequence in the database is not very similar to the sequence that you are using as a query.
    Instead, use automated taxonomic classification (see tutorial for tomorrow).
 
 .. admonition:: Question 8
 
-   What is the best BLAST hit for the most abundant feature in your data set?
+   What is the best BLAST hit for the most abundant feature in the data set?
 
 
 
