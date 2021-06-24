@@ -5,7 +5,7 @@ Getting started
 The data package
 ===========================================
 
-You can download the data package used in this workshop from `Zenodo <https://doi.org/10.5281/zenodo.4946266>`_.
+You can download the data package used in this workshop from `Zenodo <https://zenodo.org/record/5025210#.YNResHUzZhE>`_, Please select versie 2021.06.2.
 This data package contains the following:
 
 * Raw sequencing data with quality scores as demultiplexed fastq.gz files.

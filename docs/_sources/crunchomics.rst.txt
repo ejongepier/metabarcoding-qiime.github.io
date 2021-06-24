@@ -366,7 +366,7 @@ Then export this as ``TMPDIR``, which qiime will automatically recognize and use
    mkdir -p tmptmp
    export TMPDIR=$PWD/tmptmp/
 
-You need quite a lot of RAM to run the classifier. Note that this means that is many of us do this in paralell,
+You need quite a lot of RAM to run the classifier. Note that this means that is many of us do this in parallel,
 you may end up in the queue. This took 14m13.817s to run:
 
 .. code-block:: bash
