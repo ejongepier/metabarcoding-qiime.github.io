@@ -441,8 +441,8 @@ how-to-view-this-qzv dada2/dada2-reprseqs.qzv
 <p>This takes ca. 6m20.559s on 8 cpus.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> srun -n <span class="m">1</span> --cpus-per-task <span class="m">8</span> --mem<span class="o">=</span>4GB qiime feature-classifier extract-reads <span class="se">\</span>
   --i-sequences <span class="nv">$DBSEQ</span> <span class="se">\</span>
-  --p-f-primer <span class="nv">$PRIMF</span> <span class="se">\</span>
-  --p-r-primer <span class="nv">$PRIMR</span> <span class="se">\</span>
+  --p-f-primer <span class="nv">$PRIMFWD</span> <span class="se">\</span>
+  --p-r-primer <span class="nv">$PRIMREV</span> <span class="se">\</span>
   --o-reads db/<span class="nv">$DBPREFIX</span>-ref-frags.qza <span class="se">\</span>
   --p-n-jobs <span class="m">8</span> <span class="se">\</span>
   --verbose <span class="se">\</span>

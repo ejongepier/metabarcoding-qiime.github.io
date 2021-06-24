@@ -325,8 +325,8 @@ This takes ca. 6m20.559s on 8 cpus.
 
    time srun -n 1 --cpus-per-task 8 --mem=4GB qiime feature-classifier extract-reads \
      --i-sequences $DBSEQ \
-     --p-f-primer $PRIMF \
-     --p-r-primer $PRIMR \
+     --p-f-primer $PRIMFWD \
+     --p-r-primer $PRIMREV \
      --o-reads db/$DBPREFIX-ref-frags.qza \
      --p-n-jobs 8 \
      --verbose \
