@@ -134,7 +134,7 @@ Compare the summary vizualisations of your demux and trimmed sequences.
 Feature table construction
 =======================================
 
-Sequences were traditionally clustered into operational taxonomic units based on a fixed dissimilarity threshold, typically 97% 
+Sequences were traditionally clustered into operational taxonomic units based on a fixed similarity threshold, typically 97% 
 (`Rideout et al. 2014 <https://pubmed.ncbi.nlm.nih.gov/25177538/>`_). 
 Such OTU clustering methods have been largely replaced now by denoise algorithms, which correct amplicon sequence errors and 
 produce high-resolution amplicon sequence variants that resolve differences of as little as one nucleotide 
